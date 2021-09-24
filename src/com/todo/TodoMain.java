@@ -46,12 +46,12 @@ public class TodoMain {
 				TodoUtil.findcateItem(l, findcate);
 				break;	
 				
-			case "ls_cate":
-				TodoUtil.lscate(l);
-				break;
-				
 			case "ls":
 				TodoUtil.listAll(l);
+				break;
+				
+			case "ls_cate":
+				TodoUtil.lscate(l);
 				break;
 
 			case "ls_name_asc":
