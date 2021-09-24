@@ -36,9 +36,10 @@ public class TodoList {
 	}
 
 	public void listAll() {
-		
+		int index=1;
 		for (TodoItem item : list) {
-			System.out.println(item.toString());
+			System.out.print(index++);
+			System.out.println(". "+item.toString());
 		}
 	}
 	

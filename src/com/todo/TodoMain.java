@@ -36,6 +36,20 @@ public class TodoMain {
 				TodoUtil.updateItem(l);
 				break;
 				
+			case "find":
+				String findStr = sc.next().trim();
+				TodoUtil.findItem(l, findStr);
+				break;	
+				
+			case "find_cate":
+				String findcate = sc.next().trim();
+				TodoUtil.findcateItem(l, findcate);
+				break;	
+				
+			case "ls_cate":
+				TodoUtil.lscate(l);
+				break;
+				
 			case "ls":
 				TodoUtil.listAll(l);
 				break;
@@ -56,6 +70,13 @@ public class TodoMain {
 			case "ls_date":
 				l.sortByDate();
 				System.out.println("\n**날짜순으로 정렬된 리스트**");
+				isList = true;
+				break;
+				
+			case "ls_date_desc":
+				l.sortByDate();
+				l.reverseList();
+				System.out.println("\n**날짜역순으로 정렬된 리스트**");
 				isList = true;
 				break;
 			

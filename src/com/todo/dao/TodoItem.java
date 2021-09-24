@@ -7,18 +7,25 @@ public class TodoItem {
     private String title;
     private String desc;
     private String current_date;
+    private String due_date;
+    private String category;
     
-    public TodoItem(String title, String desc){
+    
+    public TodoItem(String title, String desc, String category, String due_date){
         this.title=title;
         this.desc=desc;
+        this.category=category;
+        this.due_date=due_date;
         Date today = new Date();
         SimpleDateFormat f = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss z");
         this.current_date= f.format(today);
     }
     
-    public TodoItem(String title, String desc, String current_date){
+    public TodoItem(String title, String desc, String category, String due_date, String current_date){
         this.title=title;
         this.desc=desc;
+        this.category=category;
+        this.due_date=due_date;
         this.current_date= current_date;
     }
     
@@ -29,13 +36,29 @@ public class TodoItem {
     public void setTitle(String title) {
         this.title = title;
     }
+    
+    public String getCategory() {
+        return category;
+    }
 
+    public void setCategory(String category) {
+        this.category = category;
+    }
+    
     public String getDesc() {
         return desc;
     }
 
     public void setDesc(String desc) {
         this.desc = desc;
+    }
+    
+    public String getDue_date() {
+        return due_date;
+    }
+
+    public void setDue_date(String due_date) {
+        this.due_date = due_date;
     }
 
     public String getCurrent_date() {
@@ -47,10 +70,10 @@ public class TodoItem {
     }
     
     public String toSaveString() {
-        return title + "##" + desc + "##" + current_date + "\n";
+        return category + "##" + title + "##" + desc + "##" + due_date + "##" +current_date + "\n";
     }
     @Override
     public String toString() {
-    	return "[" + title + "] "+desc +" - "+current_date;
+    	return "[" + category + "] "+title +" - "+ desc +" - "+due_date+" - "+current_date;
     }
 }
