@@ -10,12 +10,14 @@ public class Menu {
         System.out.println("edit : 항목 수정하기 ");
         System.out.println("ls : 전체 리스트 보기 ");
         System.out.println("ls_cate : 카테고리 전체 항목 보기 ");
-        System.out.println("ls_name_asc : 리스트 제목순으로 보기 ");
+        System.out.println("ls_name : 리스트 제목순으로 보기 ");
         System.out.println("ls_name_desc : 리스트 제목역순으로 보기 ");
         System.out.println("ls_date : 리스트 날짜순으로 보기 ");
         System.out.println("ls_date_desc : 리스트 날짜역순으로 보기 ");
         System.out.println("find <키워드> : 제목, 내용에서 키워드를 포함하고 있는 항목 보기 ");
         System.out.println("find_cate <키워드> : 카테고리에서 키워드를 포함하고 있는 항목 보기 ");
+        System.out.println("comp : 완료된 거 체크하기 ");
+        System.out.println("ls_comp : 할일 완료된 항목 보기 ");
         System.out.println("exit : 종료하기 ");
     
     }
