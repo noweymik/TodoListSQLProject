@@ -19,8 +19,8 @@ public class Menu {
         System.out.println("comp : 완료된 거 체크하기 ");
         System.out.println("uncomp : 완료 체크 해제하기 ");
         System.out.println("ls_comp : 할일 완료된 항목 보기 ");
-        System.out.println("favortie : 즐겨찾기하기 ");
-        System.out.println("ls_favortie : 즐겨찾기한 항목 보기 ");
+        System.out.println("favorite : 즐겨찾기하기 ");
+        System.out.println("ls_favorite : 즐겨찾기한 항목 보기 ");
         System.out.println("exit : 종료하기 ");
     
     }

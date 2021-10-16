@@ -184,7 +184,10 @@ public class TodoList {
 				String due_date = rs.getString("due_date");
 				String current_date = rs.getString("current_date");
 				int is_completed = rs.getInt("is_completed");
-				TodoItem t = new TodoItem(title, description, category, due_date, current_date, is_completed);
+				String difficulty = rs.getString("difficulty");
+				String estimated_time = rs.getString("estimated_time");
+				int important = rs.getInt("important");
+				TodoItem t = new TodoItem(title, description, category, due_date, current_date, is_completed, difficulty, estimated_time, important);
 				t.setId(id);
 				t.setCurrent_date(current_date);
 				list.add(t);
@@ -230,7 +233,10 @@ public class TodoList {
 				String due_date = rs.getString("due_date");
 				String current_date = rs.getString("current_date");
 				int is_completed = rs.getInt("is_completed");
-				TodoItem t = new TodoItem(title, description, category, due_date, current_date, is_completed);
+				String difficulty = rs.getString("difficulty");
+				String estimated_time = rs.getString("estimated_time");
+				int important = rs.getInt("important");
+				TodoItem t = new TodoItem(title, description, category, due_date, current_date, is_completed, difficulty, estimated_time, important);
 				t.setId(id);
 				t.setCurrent_date(current_date);
 				list.add(t);
@@ -354,11 +360,14 @@ public class TodoList {
 				String due_date = rs.getString("due_date");
 				String current_date = rs.getString("current_date");
 				int is_completed = rs.getInt("is_completed");
+				String difficulty = rs.getString("difficulty");
+				String estimated_time = rs.getString("estimated_time");
 				int important = rs.getInt("important");
-				t = new TodoItem(title, description, category, due_date, current_date, is_completed, important);
+				t = new TodoItem(title, description, category, due_date, current_date, is_completed, difficulty, estimated_time, important);
 				t.setId(id);
 				t.setCurrent_date(current_date);
-				System.out.println(t.printInfo());
+				list.add(t);
+				System.out.println(t.toString());
 				
 			}
 			pstmt.close();

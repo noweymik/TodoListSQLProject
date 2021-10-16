@@ -95,7 +95,6 @@ public class TodoUtil {
 			t.setId(index);
 			if(l.updateItem(t) > 0)
 				System.out.println("\n항목 업데이트를 완료하였습니다. ^^\n");
-//		}
 
 	}
 	public static void completeItem(TodoList l, int index) {

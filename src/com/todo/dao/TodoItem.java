@@ -154,13 +154,6 @@ public class TodoItem {
 		// TODO Auto-generated method stub
 		this.id = id;
 	}
-	
-	public String printInfo() {
-		return "TodoItem [id=" + id + ", title=" + title + ", desc=" + desc + ", current_date=" + current_date
-				+ ", due_date=" + due_date + ", category=" + category + ", is_completed=" + is_completed
-				+ ", difficulty=" + difficulty + ", estimated_time=" + estimated_time + ", important=" + important
-				+ "]";
-	}
 
 	public void setIscompleted(int is_completed) {
 		// TODO Auto-generated method stub
