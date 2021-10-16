@@ -12,7 +12,7 @@ public class TodoMain {
 	
 		Scanner sc = new Scanner(System.in);
 		TodoList l = new TodoList();
-		l.importData("todolist.txt");
+		//l.importData("todolist.txt");
 		
 		boolean isList = false;
 		boolean quit = false;
@@ -80,8 +80,33 @@ public class TodoMain {
 				break;
 				
 			case "comp":
-				int comp_index = sc.nextInt();
-				TodoUtil.completeItem(l, comp_index);
+				System.out.println("완료체크할 항목의 개수 입력 >> ");
+				int compCount = sc.nextInt();
+				int[] compnum = new int[compCount];
+				System.out.printf(compCount+"개 만큼 완료체크할 항목을 입력 >> ");
+				for(int j=0; j<compCount; j++) {
+					compnum[j] = sc.nextInt();
+					TodoUtil.completeItem(l, compnum[j]);
+				}
+				break;
+				
+			case "uncomp":
+				System.out.println("\n**완료된 할일 리스트**");
+				TodoUtil.listAll(l,1);
+				System.out.println("완료체크한 항목 중 취소할 항목 번호 입력 >> ");
+				int uncompnum = sc.nextInt();
+				TodoUtil.uncompleteItem(l, uncompnum);
+				break;
+				
+			case "favorite": 
+				System.out.println("즐겨찾기할 항목 입력 >> ");
+				int fav = sc.nextInt();
+				TodoUtil.importantItem(l, fav);
+				break;
+				
+			case "ls_favorite":
+				System.out.println("\n**즐겨찾기 리스트**");
+				TodoUtil.listImportant(l,1);
 				break;
 				
 			case "help":

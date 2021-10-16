@@ -17,7 +17,10 @@ public class Menu {
         System.out.println("find <키워드> : 제목, 내용에서 키워드를 포함하고 있는 항목 보기 ");
         System.out.println("find_cate <키워드> : 카테고리에서 키워드를 포함하고 있는 항목 보기 ");
         System.out.println("comp : 완료된 거 체크하기 ");
+        System.out.println("uncomp : 완료 체크 해제하기 ");
         System.out.println("ls_comp : 할일 완료된 항목 보기 ");
+        System.out.println("favortie : 즐겨찾기하기 ");
+        System.out.println("ls_favortie : 즐겨찾기한 항목 보기 ");
         System.out.println("exit : 종료하기 ");
     
     }

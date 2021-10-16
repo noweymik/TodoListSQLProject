@@ -22,8 +22,8 @@ public class TodoList {
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(filename));
 			String line;
-			String sql = "insert into list (title, memo, category, current_date, due_date)"
-						+ " values (?,?,?,?,?);";
+			String sql = "insert into list (title, memo, category, current_date, due_date, difficulty, estimated_time)"
+						+ " values (?,?,?,?,?,?,?);";
 			int records = 0;
 			while((line = br.readLine()) != null) {
 				StringTokenizer st = new StringTokenizer(line, "##");
@@ -32,6 +32,8 @@ public class TodoList {
 				String description = st.nextToken();
 				String due_date = st.nextToken();
 				String current_date = st.nextToken();
+				String difficulty = st.nextToken();
+				String estimated_time = st.nextToken();
 				
 				PreparedStatement pstmt = conn.prepareStatement(sql);
 
@@ -40,6 +42,8 @@ public class TodoList {
 				pstmt.setString(3, category);
 				pstmt.setString(4, current_date);
 				pstmt.setString(5, due_date);
+				pstmt.setString(6, difficulty);
+				pstmt.setString(7, estimated_time);
 				
 				int count = pstmt.executeUpdate();
 				if(count > 0) records++;
@@ -58,8 +62,8 @@ public class TodoList {
 	}
 
 	public int addItem(TodoItem t) {
-		String sql = "insert into list(title, memo, category, current_date, due_date)"
-					+ " values (?,?,?,?,?);";
+		String sql = "insert into list(title, memo, category, current_date, due_date, difficulty, estimated_time)"
+					+ " values (?,?,?,?,?,?,?);";
 		PreparedStatement pstmt;
 		int count=0;
 		try {
@@ -69,6 +73,8 @@ public class TodoList {
 			pstmt.setString(3, t.getCategory());
 			pstmt.setString(4, t.getCurrent_date());
 			pstmt.setString(5, t.getDue_date());
+			pstmt.setString(6, t.getDifficulty());
+			pstmt.setString(7, t.getEstimated_time());
 			count = pstmt.executeUpdate();
 			pstmt.close();
 		}	catch (SQLException e) {
@@ -145,7 +151,10 @@ public class TodoList {
 				String due_date = rs.getString("due_date");
 				String current_date = rs.getString("current_date");
 				int is_completed = rs.getInt("is_completed");
-				TodoItem t = new TodoItem(title, description, category, due_date, current_date, is_completed);
+				String difficulty = rs.getString("difficulty");
+				String estimated_time = rs.getString("estimated_time");
+				int important = rs.getInt("important");
+				TodoItem t = new TodoItem(title, description, category, due_date, current_date, is_completed, difficulty, estimated_time, important);
 				t.setId(id);
 				t.setCurrent_date(current_date);
 				list.add(t);
@@ -251,7 +260,9 @@ public class TodoList {
 				String due_date = rs.getString("due_date");
 				String current_date = rs.getString("current_date");
 				int is_completed = rs.getInt("is_completed");
-				TodoItem t = new TodoItem(title, description, category, due_date, current_date, is_completed);
+				String difficulty = rs.getString("difficulty");
+				String estimated_time = rs.getString("estimated_time");
+				TodoItem t = new TodoItem(title, description, category, due_date, current_date, is_completed, difficulty, estimated_time);
 				t.setId(id);
 				t.setCurrent_date(current_date);
 				list.add(t);
@@ -309,6 +320,23 @@ public class TodoList {
 		}
 		return count;
 	}
+	public int importantItem(TodoItem t) {
+		String sql = "update list set important = ? WHERE id = ?;";
+		
+		PreparedStatement pstmt;
+		int count = 0;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, t.getImportant());
+			pstmt.setInt(2, t.getId());
+			count = pstmt.executeUpdate();
+			pstmt.close();
+		}	catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return count;
+	}
+	
 	public TodoItem getList(int index) {
 		TodoItem t = null;// = new TodoItem();
 		PreparedStatement pstmt;
@@ -326,9 +354,11 @@ public class TodoList {
 				String due_date = rs.getString("due_date");
 				String current_date = rs.getString("current_date");
 				int is_completed = rs.getInt("is_completed");
-				t = new TodoItem(title, description, category, due_date, current_date, is_completed);
+				int important = rs.getInt("important");
+				t = new TodoItem(title, description, category, due_date, current_date, is_completed, important);
 				t.setId(id);
 				t.setCurrent_date(current_date);
+				System.out.println(t.printInfo());
 				
 			}
 			pstmt.close();
